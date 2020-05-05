@@ -1,4 +1,4 @@
-import os
+import os # loopy꺼
 all_id = list() 
 
 class Account:
