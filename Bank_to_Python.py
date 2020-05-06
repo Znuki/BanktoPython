@@ -103,14 +103,14 @@ class BanckingSystem:
             print("4. 전체조회")
             print("5. 프로그램 종료")
             print("===================")
-            cho = input("입력: ")
-            if cho == "1":       # 계좌개설
+            choice = input("입력: ")
+            if choice == "1":       # 계좌개설
                 clr()
                 print("=======계좌개설=======")
                 print(BankManager().new_id(Account()))
                 print("===================")
                 
-            elif cho == "2":     # 입금
+            elif choice == "2":     # 입금
                 clr()
                 print("========입 금========")
                 userid = input("계좌번호 =")
@@ -118,7 +118,7 @@ class BanckingSystem:
                 print("===================")
                  
                 
-            elif cho == "3":    # 출금
+            elif choice == "3":    # 출금
                 clr()
                 print("========출 금========")
                 userid = input("계좌번호 =")
@@ -126,13 +126,14 @@ class BanckingSystem:
                 if a != None:
                     print("{0}원 출금하셨습니다.".format(a))
                 
-            elif cho == "4":
+            elif choice == "4":
                 clr()
-                print("========조 회========")
+                print("========조 회========")3
+
                 BankManager().showAccount()
                 print("===================")
                 
-            elif cho == "5":
+            elif choice == "5":
                 BankManager().save()
                 print("종료")
                 break
