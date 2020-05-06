@@ -1,8 +1,9 @@
-import os # loopy꺼
-all_id = list() 
+import os       # loopy
+
+all_id = list()
 
 class Account:
-    def __init__(self, userid= "", name = "", balance=0):    
+    def __init__(self, userid= "", name = "", balance=0):   
         if(userid == ""):
             self.userid = input("계좌번호 = ")
             self.name = input("고객이름 = ")
@@ -14,11 +15,11 @@ class Account:
             
     def disp(self):            
         print("계좌번호:{0}\t이름: {1}\t잔액: {2}".format(self.userid, self.name, self.balance))
-
+    
     def info(self):
         return "{0}:{1}:{2}\n".format(self.userid, self.name, self.balance)
     
-
+    # 
     def getid(self):
         return self.userid
     
@@ -35,7 +36,7 @@ class Account:
     
     def getBalance(self):     
         return self.balance
-                
+            
 try:
     f = open(file,"r")
     
@@ -50,11 +51,17 @@ try:
 except Exception as ex:
     print("파일 없습니다")
     print(ex)
-                
+    
+
+# 화면 초기화                 
 def clr():
     os.system('cls')
     
+# 계좌정보를 이용하여 구현될 기능을 담고 있는 클래스 멤버필드 
+# 멤버메서드 : makeAccount() - 계좌개설을 담당할 메서드
+
 class BankManager:
+    # 출금처리를 담당할 메서드
     def withdraw(self,userid):    
         for i in all_id:
             if i.getid() == userid:
@@ -62,6 +69,7 @@ class BankManager:
                 return i.withdraw(money)
         print("해당하는 계좌가 없습니다.")
         
+    # 입금처리를 담당할 메서드
     def deposit(self,userid):     
         for i in all_id:
             if i.getid() == userid:
@@ -71,6 +79,7 @@ class BankManager:
                 return 0
         print("일치하는 계좌번호가 존재하지 않습니다")
     
+    # 계좌번호의 중복여부를 판단할 메서드
     def new_id(self,user):             
         for i in all_id:
             if i.getid() == user.getid():
@@ -79,6 +88,7 @@ class BankManager:
         all_id.append(user)
         return "계좌 개설이 완료되었습니다."   
     
+    # 전체고객의 계좌정보를 출력할 메서드
     def showAccount(self):             
         if len(all_id) != 0:
             for i in range(0,len(all_id)):
@@ -86,13 +96,15 @@ class BankManager:
         else:
             print("보유한 계좌가 없습니다.")
                  
+    # 파일 저장 메서드
     def save(self):
         f = open(file,"w")
         for i in all_id:
             f.write(i.info())
             
         f.close()
-
+            
+# 사용자와의 인터페이스를 담당할 목적의 클래스
 class BanckingSystem: 
     def run():
         while True:
@@ -126,17 +138,16 @@ class BanckingSystem:
                 if a != None:
                     print("{0}원 출금하셨습니다.".format(a))
                 
-            elif cho == "4":
+            elif cho == "4":    # 조회
                 clr()
                 print("========조 회========")
                 BankManager().showAccount()
                 print("===================")
                 
-            elif cho == "5":
+            elif cho == "5":    # 종료
                 BankManager().save()
                 print("종료")
                 break
 
-##############################
 if __name__ =='__main__':
-    BanckingSystem.run()
+    BanckingSystem.run()        # 메인함수 실행
