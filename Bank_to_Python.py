@@ -128,7 +128,7 @@ class BanckingSystem:
                 
             elif choice == "4":
                 clr()
-                print("========조 회========")3
+                print("========조 회========")
 
                 BankManager().showAccount()
                 print("===================")
