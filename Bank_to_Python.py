@@ -148,6 +148,10 @@ class BanckingSystem:
                 BankManager().save()
                 print("종료")
                 break
+                
+            else:                # 예외처리
+                print("잘못된 값을 입력했습니다.")
+                
 
 if __name__ =='__main__':
     BanckingSystem.run()        # 메인함수 실행
