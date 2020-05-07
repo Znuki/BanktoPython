@@ -1,4 +1,7 @@
-import os  # loopy
+import os  # loopy, chicken
+
+file = "C:/Users/Sewon/Desktop/likelion/Bank.txt"   # 텍스트 파일 저장 위치 입력 (예외 처리 함수 연동, 계좌 세이브 기능)
+                                                    # 따로 텍스트 파일 위치 입력해줘야해요~~
 
 all_id = list()  # 모든 id를 담을 리스트 선언
 
@@ -37,20 +40,21 @@ class Account:  # BankManager에서 사용하는 함수를 선언한 클래스
     def getBalance(self):       #유저의 잔액을 리턴하는 함수
         return self.balance
       
-try:
-    f = open(file, "r")         #파이썬 파일을 연다
+try:                            # 오류 처리 기법 함수 // 예외 처리!!
+    f = open(file, "r")         # 파이썬 파일을 연다 // 파일 읽기 모드
 
     while True:
-        line = f.readline()     #파일을 읽는다
-        if not line:
+        line = f.readline()     # 맞으면 읽어주시고
+        if not line:            # 아니면 브레이크
             break
 
         a, b, c = line.split(":")
         all_id.append(Account(a, b, int(c)))
     f.close()
-except Exception as ex:         #파일이 없는 예외일 때 "파일 없습니다"를 출력
-    print("파일 없습니다")
-    print(ex)
+
+except Exception as error:         # 파일이 없는 예외일 때 "파일 없습니다"를 출력
+    print("그런 파일은 없어 친구야")
+    print(error)
 
 # 화면 초기화
 def clr():
@@ -145,8 +149,8 @@ class BanckingSystem:
                 print("===================")
                 
             elif choice == "5":    # 종료
-                BankManager().save()
-                print("종료")
+                BankManager().save()  # 텍스트 파일에 계좌와 이름, 잔액을 적어서 저장해줍니다!!
+                print("종료")         # 다음에 실행할때 계좌, 이름, 잔액이 저장되어 동일한 건 만들 수 없습니다~~
                 break
 
 if __name__ =='__main__':
