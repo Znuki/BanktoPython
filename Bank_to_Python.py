@@ -1,11 +1,13 @@
-from BankService import *
+from BankService import BankingSystems as BS
+from BankService import Bankmanagers as BM
 
-
-# # BM.withdraw(self, userid)
-# # BM.deposit(self, userid)
-# # BM.new_id(self, user)
-# # BM.showAccount(self)
-# # BM.save(self)
+BS.clr()
+BS.run()
+BM.withdraw(self, userid)
+BM.deposit(self, userid)
+BM.new_id(self, user)
+BM.showAccount(self)
+BM.save(self)
 #
 # import os  # loopy, chicken
 #
