@@ -152,6 +152,10 @@ class BanckingSystem:
                 BankManager().save()  # 텍스트 파일에 계좌와 이름, 잔액을 적어서 저장해줍니다!!
                 print("종료")         # 다음에 실행할때 계좌, 이름, 잔액이 저장되어 동일한 건 만들 수 없습니다~~
                 break
+                
+            else:                # 예외처리
+                print("잘못된 값을 입력했습니다.")
+                
 
 if __name__ =='__main__':
     BanckingSystem.run()        # 메인함수 실행
